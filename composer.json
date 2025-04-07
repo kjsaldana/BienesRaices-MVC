@@ -1,0 +1,21 @@
+{
+    "name": "pc/bienesraices_2025",
+    "description": "Composer en primer proyecto",
+    "autoload": {
+        "psr-4": {
+            "Pc\\Bienesraices2025\\": "src/",
+            "Model\\": "./models",
+            "MVC\\": "./",
+            "Controller\\": "./controllers"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kevin",
+            "email": "kjoseph@correo.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^3.11"
+    }
+}
