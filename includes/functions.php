@@ -66,4 +66,5 @@ function validateUrl($url){
     if (!$id) {
         header("Location: $url");
     }
+    return $id;
 }

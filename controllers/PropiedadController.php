@@ -10,9 +10,11 @@ class PropiedadController {
     public static function index(Router $router) {
         $id = $_GET['id']?? null;
         $propiedades = Propiedad::all();
+        $vendedores = Vendedor::all();
         
         $router->render('propiedades/admin', [
             'propiedades' => $propiedades,
+            'vendedores' => $vendedores,
             'id' => $id
         ]);
     }
@@ -55,10 +57,9 @@ class PropiedadController {
     }
 
     public static function update(Router $router) {
-        validateUrl('/admin');
+        $id = validateUrl('/admin');
 
-
-        $propiedad = Propiedad::find($_GET['id']);
+        $propiedad = Propiedad::find($id);
 
         $vendedores = Vendedor::all();
 
@@ -100,14 +101,16 @@ class PropiedadController {
 
     public static function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
-            $id = filter_var($id, FILTER_VALIDATE_INT);
+            $id = validateUrl('/admin');
+            $tipo = $_POST['tipo'];
 
-            if ($id) {
-                $id = $_POST['id'];
-                $propiedad = Propiedad::find($id);
-                $propiedad->deleteImage();
-                $resultado = $propiedad->eliminar($id);
+            if (validarTipoContenido($tipo)) {
+                if ($id && $tipo === 'propiedad') {
+                    $id = $_POST['id'];
+                    $propiedad = Propiedad::find($id);
+                    $propiedad->deleteImage();
+                    $resultado = $propiedad->eliminar($id);
+                }
             }
         }
     

@@ -12,7 +12,7 @@
                 <label for="imagen">imagen:</label>
                 <input id="imagen" name="propiedad[imagen]" type="file" accept="image/jpeg, image/png">
             </div>  
-            <?php if ($propiedad->imagen && $_SERVER["PHP_SELF"] === "/admin/propiedades/actualizar.php") {?>
+            <?php if ($propiedad->imagen && $_SERVER["PATH_INFO"] === "/propiedades/actualizar") {?>
             <img src="/imagenes/<?php echo $propiedad->imagen; ?>" alt="imagen no subida" class="img-small">
             <?php }?>
             <div class="type">
