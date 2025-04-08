@@ -101,12 +101,12 @@ class PropiedadController {
 
     public static function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = validateUrl('/admin');
+            
+            $id = $_POST['id'];
             $tipo = $_POST['tipo'];
 
             if (validarTipoContenido($tipo)) {
                 if ($id && $tipo === 'propiedad') {
-                    $id = $_POST['id'];
                     $propiedad = Propiedad::find($id);
                     $propiedad->deleteImage();
                     $resultado = $propiedad->eliminar($id);

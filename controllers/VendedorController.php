@@ -53,8 +53,8 @@ class VendedorController {
     
     public static function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = validateUrl('/admin');
-
+            
+            $id = $_POST['id'];
             $tipo = $_POST['tipo'];
 
             if (validarTipoContenido($tipo)) {

@@ -126,7 +126,7 @@ class ActiveRecord {
     
     public static function all($limit = null) {
         // debug(static::$tabla);
-        $query = 'SELECT * FROM ' . static::$tabla . ($limit !==null? ' LIMIT ' . intval($limit) : '');
+        $query = 'SELECT * FROM ' . static::$tabla . (!empty($limit)? ' LIMIT ' . intval($limit) : '');
         return self::consultarQuery($query);
     }
 

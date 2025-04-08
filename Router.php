@@ -14,7 +14,7 @@ class Router {
     }
 
     public function checkRoutes() {
-        $actualUrl = $_SERVER['PATH_INFO'];
+        $actualUrl = $_SERVER['PATH_INFO']?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
         
         if ($method === 'GET') {
