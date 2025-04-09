@@ -52,6 +52,9 @@ function mostrarAviso($id) {
         case '3':
             $aviso = 'Eliminado Correctamente'; 
             break;
+        case '4':
+            $aviso = 'Logado Correctamente'; 
+            break;
         default:
             $aviso = false;
             break;

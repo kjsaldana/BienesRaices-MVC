@@ -1,8 +1,6 @@
 <?php
-autentificacionAdmin();
-
-$login = false;
-$auth = false;
+$auth = $_SESSION['auth']?? null;
+$login = $login?? null;
 $inicio = $inicio?? null;
 ?>
 <!DOCTYPE html>
@@ -13,7 +11,8 @@ $inicio = $inicio?? null;
     <title>Bienes y Raices</title>
     <link rel="stylesheet" href="/build/css/app.css">
 </head>
-<body class="<?php echo $login? 'page': ''; ?>">
+<body <?php echo $login?' class="page" ': ''; ?>>
+
     <header class="header <?php echo $inicio? 'inicio': ''?>">
         <div class="contenedor contenido-header">
 
@@ -30,7 +29,7 @@ $inicio = $inicio?? null;
                     <a href="/propiedades">Anuncios</a>
                     <a href="/blog">Blog</a>
                     <a href="/contacto">Contacto</a>
-                    <a href="<?php echo !$auth? '/login.php': '/logout.php'?>"><?php echo !$auth? 'conectarse': 'cerrar sesion'?></a>
+                    <a href="<?php echo !$auth? '/login': '/logout'?>"><?php echo !$auth? 'conectarse': 'cerrar sesion'?></a>
                     <a href="#">
                         <img class="botonDM" src="/build/img/dark-mode.svg" alt="luna dark-mode">
                     </a>

@@ -1,3 +1,11 @@
+<div class="aviso neutro">
+    <?php 
+    $id = $id?? null;
+    $mensaje = mostrarAviso(intval($id));
+    if ($mensaje) { ?>
+        <p> <?php echo s($mensaje); ?> </p>
+    <?php } ?>
+</div>
 <main class="contenido-centrado contenedor seccion">
         <h1>Contacto</h1>
         <picture>
@@ -14,19 +22,11 @@
                     
                     <div class="type">
                         <label for="name">Nombre</label>
-                        <input type="text" placeholder="Tu nombre" id="name" name="contacto[nombre]">
-                    </div>
-                    <div class="type">
-                        <label for="email">eMail</label>
-                        <input type="email" placeholder="Tu eMail" id="email" name="contacto[email]">
-                    </div>
-                    <div class="type">
-                        <label for="movil">Movil</label>
-                        <input type="tel" placeholder="Tu movil" id="movil" name="contacto[movil]">
+                        <input type="text" placeholder="Tu nombre" id="name" name="contacto[nombre]" required>
                     </div>
                     <div class="type">
                         <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="contacto[mensaje]"></textarea>
+                        <textarea id="mensaje" name="contacto[mensaje]" required></textarea>
                     </div>
                 </fieldset>
 
@@ -43,7 +43,7 @@
                     </div>
                     <div class="type">
                         <label for="precio">Cantidad en euros</label>
-                        <input type="number" step="any" placeholder="€€€" id="precio" min="0" name="contacto[precio]">
+                        <input type="number" step="any" placeholder="€€€" id="precio" min="0" name="contacto[precio]" required>
                     </div>
                 </fieldset>
 
@@ -54,21 +54,34 @@
                     <div class="type">
                         <div class="contacto-form">
                             <label for="movil-radio">Movil</label>
-                            <input type="radio" value="movil" name="contacto[contacto]" id="movil-radio">
+                            <input type="radio" value="movil" name="contacto[contacto]" id="movil-radio" required>
                             <label for="email-radio">eMail</label>
-                            <input type="radio" value="email" name="contacto[contacto]" id="email-radio">
+                            <input type="radio" value="email" name="contacto[contacto]" id="email-radio" required>
                         </div>
                     </div>
 
-                    <p class="texto-form">Fecha y hora</p>
-                    <div class="type">
-                        <label for="date">Fecha</label>
-                        <input type="date" id="date" name="contacto[fecha]">
+                    <div class="contacto-movil oculto">
+                        <div class="type">
+                            <label for="movil">Movil</label>
+                            <input type="tel" placeholder="Tu movil" id="movil" name="contacto[movil]">
+                        </div>
+                        <div class="type">
+                            <label for="date">Fecha</label>
+                            <input type="date" id="date" name="contacto[fecha]">
+                        </div>
+                        <div class="type">
+                            <label for="time">Hora</label>
+                            <input type="time" id="time" min="09:00" max="21:00" name="contacto[hora]">
+                        </div>
                     </div>
-                    <div class="type">
-                        <label for="time">Hora</label>
-                        <input type="time" id="time" min="09:00" max="21:00" name="contacto[hora]">
+
+                    <div class="contacto-email oculto">
+                        <div class="type">
+                            <label for="email">eMail</label>
+                            <input type="email" placeholder="Tu eMail" id="email" name="contacto[email]">
+                        </div>
                     </div>
+
                 </fieldset>
                 <div class="boton-gris-from">
                     <input type="submit" class="boton-gris" value="Enviar">

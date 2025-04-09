@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    mostrarBarra();
-    modoOscuro();
+    mostrarBarra()
+    modoOscuro()
+    modoContacto()
 })
 
 function mostrarBarra() {
@@ -11,7 +12,6 @@ barra.addEventListener('click', function () {
     navegacion.classList.toggle('on');
 })
 }
-
 // function modoOscuro() {
 //     const boton = document.querySelector('.botonDM');
 //     const body = document.querySelector('body');
@@ -65,29 +65,7 @@ barra.addEventListener('click', function () {
 //     })
 // }
 
-
-function modoOscuro() {
-    const boton = document.querySelector('.botonDM')
-    const body = document.querySelector('body')
-
-    if (localStorage.getItem('modoOscuro') === 'activado') {
-        body.classList.add('dark-mode');
-    }
-
-    boton.addEventListener('click', e=>{
-        e.preventDefault()
-        body.classList.toggle('dark-mode')
-
-                if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('modoOscuro', 'activado');
-        } else {
-            localStorage.setItem('modoOscuro', 'desactivado');
-        }
-    })
-}
-
-
-// Primer modo
+// Primer modo-------------------
 // function modoOscuro() {
 //     const boton = document.querySelector('.botonDM')
 //     const body = document.querySelector('body')
@@ -106,3 +84,46 @@ function modoOscuro() {
 //         body.classList.remove('dark-mode')
 //     }
 // }
+
+function modoOscuro() {
+    const boton = document.querySelector('.botonDM')
+    const body = document.querySelector('body')
+
+    if (localStorage.getItem('modoOscuro') === 'activado') {
+        body.classList.add('dark-mode');
+    }
+
+    boton.addEventListener('click', e=>{
+        e.preventDefault()
+        body.classList.toggle('dark-mode')
+
+                if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('modoOscuro', 'activado')
+        } else {
+            localStorage.setItem('modoOscuro', 'desactivado')
+        }
+    })
+}
+
+function modoContacto(){
+    const inputMovil = document.querySelectorAll('[name="contacto[contacto]"]')
+    const contactoMovil = document.querySelector('.contacto-movil')
+    const contactoEmail = document.querySelector('.contacto-email')
+
+    inputMovil.forEach(input => {input.addEventListener('click', e => {
+        if (e.target.id === 'email-radio') {
+            contactoEmail.classList.remove('oculto')
+            contactoMovil.classList.add('oculto')
+        }else {
+            contactoMovil.classList.remove('oculto')
+            contactoEmail.classList.add('oculto')
+        }
+    })});
+}
+
+window.onload = () => {
+    const aviso = document.querySelectorAll('.aviso')
+    setTimeout(() => {
+        aviso.forEach(aviso => aviso.style.display = 'none')    
+    }, 3000);
+}

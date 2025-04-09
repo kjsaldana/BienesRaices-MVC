@@ -49,6 +49,9 @@ class PaginasController{
     }
 
     public static function contacto(Router $router) {
+        
+        $id = $_GET['id']?? null;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $respuesta = $_POST['contacto'];
             $mail = new PHPMailer();
@@ -70,19 +73,27 @@ class PaginasController{
 
             $contenido = '<html><p>Nuevo mensaje</p>';
             $contenido .= '<p>Nombre : ' . $respuesta['nombre'] . '</p>';
-            $contenido .= '<p>Email : ' . $respuesta['email'] . '</p>';
-            $contenido .= '<p>Movil : ' . $respuesta['movil'] . '</p>';
             $contenido .= '<p>Mensaje : ' . $respuesta['mensaje'] . '</p>';
             $contenido .= '<p>Compra/Venta : ' . $respuesta['tipo'] . '</p>';
             $contenido .= '<p>Precio : €' . $respuesta['precio'] . '</p>';
-            $contenido .= '<p>Fecha : ' . $respuesta['fecha'] . '</p>';
-            $contenido .= '<p>Hora : ' . $respuesta['hora'] . '</p>';
+
+            if ($respuesta['tipo'] === 'movil') {
+                $contenido .= '<p>Decidio ser contactado por movil</p>';
+                $contenido .= '<p>Movil : ' . $respuesta['movil'] . '</p>';
+                $contenido .= '<p>Fecha : ' . $respuesta['fecha'] . '</p>';
+                $contenido .= '<p>Hora : ' . $respuesta['hora'] . '</p>';
+            }else {
+                $contenido .= '<p>Decidio ser contactado por email</p>';
+                $contenido .= '<p>Email : ' . $respuesta['email'] . '</p>';
+            }
+
             $contenido .= '</html>';
 
             $mail->Body = $contenido;
             $mail->AltBody = 'Alt. texto';
 
             if ($mail->send()) {
+                header('Location: /contacto?id=1');
                 echo 'Enviado correctamente';
             }else {
                 echo 'Error al ser enviado';
@@ -90,6 +101,7 @@ class PaginasController{
         }
             
         $router->render('paginas/contacto', [
+            'id' => $id
         ]);    
     }
 

@@ -15,7 +15,8 @@ class PropiedadController {
         $router->render('propiedades/admin', [
             'propiedades' => $propiedades,
             'vendedores' => $vendedores,
-            'id' => $id
+            'id' => $id,
+
         ]);
     }
     
