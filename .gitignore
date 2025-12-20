@@ -1,6 +1,4 @@
 **/.DS_Store
-/public/imagenes/
-/public/build/img/
 src/img/
 node_modules/
 /vendor/
