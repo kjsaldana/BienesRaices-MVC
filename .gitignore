@@ -4,3 +4,4 @@
 src/img/
 node_modules/
 /vendor/
+.env

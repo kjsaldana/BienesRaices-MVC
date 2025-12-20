@@ -7,9 +7,9 @@
     flex-direction: column;
     padding-top: 3rem;
     align-items: center;
-    
+
     @include m.tablet {
-        
+
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -17,56 +17,71 @@
 }
 
 .navegacion {
-    
+
     display: none;
     align-items: center;
-    &.on{
+
+    &.on {
         display: flex;
         flex-direction: column;
-        
-        @include m.tablet{
+
+        @include m.tablet {
             flex-direction: row;
         }
     }
+
     @include m.tablet {
         display: flex;
         flex-direction: row;
         gap: 1rem;
     }
+
     a {
         display: block;
         text-align: center;
         color: v.$blanco;
         text-decoration: none;
         margin: 1rem auto;
-        img{
+
+        img {
             height: 3.5rem;
             filter: invert(100%);
         }
-        &:hover{
+
+        &:hover {
             color: v.$verde;
         }
     }
+
+    a:last-of-type {
+        img {
+            height: 2.5rem;
+        }
+    }
+
 }
 
 
 .menu-barra {
     width: 5rem;
-    @include m.tablet{
+
+    @include m.tablet {
         margin: 0;
+
         img {
             display: none;
         }
     }
 }
 
-.on{
+.on {
     display: flex;
     flex-direction: column;
-    @include m.tablet{
+
+    @include m.tablet {
         flex-direction: row;
     }
-    
+
 }
 
 // visibility: hidden;
