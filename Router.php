@@ -17,6 +17,7 @@ class Router {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        $auth = $_SESSION['auth']?? null;
         $protectedRoutes = ['/admin','/propiedades/eliminar','/propiedades/crear','/propiedades/actualizar','/vendedores/eliminar','/vendedores/crear','/vendedores/actualizar'];
 
         $actualUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
