@@ -47,10 +47,11 @@ class Admin extends ActiveRecord{
     }
 
     public function authorize(){
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['usuario'] = $this->email;
-        $_SESSION['auth'] = 'true';
-
+        $_SESSION['auth'] = true;
         header('location: /admin?id=4');
     }
 }
