@@ -60,7 +60,7 @@ Este proyecto evita el uso de frameworks pesados para demostrar el dominio de lo
 
 ---
 
-## Desafíos Técnicos Resueltos
+## Desafíos Técnicos
 
 ### 1. Sistema de Upload de Archivos Seguro
 El manejo de imágenes es crítico. Implementé una lógica que:
